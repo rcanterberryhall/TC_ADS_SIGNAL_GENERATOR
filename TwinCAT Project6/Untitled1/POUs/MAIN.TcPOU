@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{fda9d826-ec2e-4388-ac70-0208ec875f25}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	nCounter : LREAL;
+	rAmplitude : REAL;
+	rPeriod	: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[GVL.nCounter := GVL.nCounter + 0.02;
+
+rAmplitude := 10*SIN(GVL.nCounter / 8);
+
+rPeriod := 10*SIN(GVL.nCounter / 12);
+
+GVL.sine := rAmplitude*SIN(GVL.nCounter / rPeriod);]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
